@@ -22,6 +22,7 @@ void print_str_kern_info(int second_level_name, char* label) {
   }
 
   printf("%s = %s\n", label, ostype);
+  free(ostype);
 }
 
 int main() {
