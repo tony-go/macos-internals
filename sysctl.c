@@ -6,15 +6,18 @@
 #include <sys/sysctl.h>
 
 void print_ostype() {
-  char *name = "kern.ostype";
+  int mib_len = 2;
+  int mib[mib_len];
+  mib[0] = CTL_KERN;
+  mib[1] = KERN_OSTYPE;
 
   size_t len;
-  if (sysctlbyname(name, NULL, &len, NULL, 0) == -1) {
+  if (sysctl(mib, mib_len, NULL, &len, NULL, 0) == -1) {
     printf("Error %s\n", strerror(errno));
   }
 
   char *ostype = malloc(len);
-  if (sysctlbyname(name, ostype, &len, NULL, 0) == -1) {
+  if (sysctl(mib, mib_len, ostype, &len, NULL, 0) == -1) {
     printf("Error %s\n", strerror(errno));
   }
 
