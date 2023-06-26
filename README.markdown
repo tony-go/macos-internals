@@ -17,3 +17,8 @@ For example for `sysctl`:
 ```sh
 ./exec/sysct
 ```
+
+## Notes
+
+* [Commands](./COMMANDS.markdown)
+* [Files](./FILES.markdown)
